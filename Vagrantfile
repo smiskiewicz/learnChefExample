@@ -10,11 +10,14 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # please see the online documentation at vagrantup.com.
   config.omnibus.chef_version = :latest
   # Every Vagrant virtual environment requires a box to build off of.
+  
   config.vm.box = "opscode-ubuntu-12.04"
+  #config.vm.box = "opscode-centos-6.5"
   
   #TO DO
   #Make this URL automatically work, later...
   config.vm.box_url = "http://opscode-vm-bento.s3.amazonaws.com/vagrant/vmware/opscode_ubuntu-12.04_chef-provisionerless.box"
+  #config.vm.box_url = "http://opscode-vm-bento.s3.amazonaws.com/vagrant/virtualbox/opscode_centos-6.5_chef-provisionerless.box"
   
   # The url from where the 'config.vm.box' box will be fetched if it
   # doesn't already exist on the user's system.
@@ -101,6 +104,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   #This hack is so i don't have to add the apt cookbook,  will fix later...
   config.vm.provision "shell",
      inline: "apt-get update -y"
+	 #inline: "yum update -y"
 	
    config.vm.provision :chef_solo do |chef|
      chef.cookbooks_path = "chef/cookbooks"

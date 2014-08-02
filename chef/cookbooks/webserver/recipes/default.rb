@@ -6,12 +6,22 @@
 #
 # 
 #
-package 'apache2'
 
-service 'apache2' do
+case node["platform"]
+when "debian", "ubuntu"
+  apacheName = "apache2"
+  wwwLocation = "/var/www"
+when "redhat", "centos", "fedora"
+  apacheName = "httpd"
+  wwwLocation = "/var/www/html"
+end
+
+package apacheName
+
+service apacheName do
   action [:start, :enable]
 end
 
-template '/var/www/index.html' do
+template "#{wwwLocation}/index.html" do
   source 'index.html.erb'
 end
