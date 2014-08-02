@@ -1,0 +1,12 @@
+<html>
+  <body>
+    <h1>Chef-tastic Apache Server!</h1>
+	<pre>
+      IP Address: <%= node['ipaddress']%>
+      Hostname: <%= node['hostname'] %>
+      Platform: <%= node['platform'] %> - <%= node['platform_version'] %>
+      RAM: <%= node['memory']['total'] %>
+      CPUs: <%= node['cpu']['total'] %>
+    </pre>
+  </body>
+</html>
