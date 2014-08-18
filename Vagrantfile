@@ -12,7 +12,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Every Vagrant virtual environment requires a box to build off of.
   
   config.vm.box = "opscode-ubuntu-12.04"
-  #config.vm.box = "opscode-centos-6.5"
+  #config.vm.box = "opscode-centos-6.4"
   
   #TO DO
   #Make this URL automatically work, later...

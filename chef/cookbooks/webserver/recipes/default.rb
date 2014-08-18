@@ -7,21 +7,15 @@
 # 
 #
 
-case node["platform"]
-when "debian", "ubuntu"
-  apacheName = "apache2"
-  wwwLocation = "/var/www"
-when "redhat", "centos", "fedora"
-  apacheName = "httpd"
-  wwwLocation = "/var/www/html"
-end
+package "#{node["webserver"]["package_name"]}"
 
-package apacheName
-
-service apacheName do
+service "#{node["webserver"]["package_name"]}" do
   action [:start, :enable]
 end
 
-template "#{wwwLocation}/index.html" do
+template "#{node["webserver"]["dir"]}/index.html" do
   source 'index.html.erb'
+  owner "root"
+  group "root"
+  mode "0644"
 end
