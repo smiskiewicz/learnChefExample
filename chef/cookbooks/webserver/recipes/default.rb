@@ -7,9 +7,9 @@
 # 
 #
 
-package "#{node["webserver"]["package_name"]}"
+package node["webserver"]["package_name"]
 
-service "#{node["webserver"]["package_name"]}" do
+service node["webserver"]["package_name"] do
   action [:start, :enable]
 end
 
